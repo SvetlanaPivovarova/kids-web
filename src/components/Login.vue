@@ -1,0 +1,147 @@
+<template>
+  <div class="login-form-mobile">
+    <h4 class="login-form-mobile__heading">Добро пожаловать!</h4>
+    <div class="login-form-mobile__wrapper">
+      <div class="form-control">
+        <input
+            :class="emailInputClass"
+            type="email"
+            id="e-mail"
+            placeholder="Email"
+            v-model.trim="email"
+        />
+        <span class="input-text__error-message">{{ errorEmail }}</span>
+      </div>
+      <div class="form-control">
+        <input
+            :class="emailInputClass"
+            type="text"
+            id="password"
+            placeholder="Password"
+            v-model.trim="password"
+        />
+        <span class="input-text__error-message">{{ errorPassword }}</span>
+      </div>
+      <div class="form-control">
+        <input
+            :class="emailInputClass"
+            type="text"
+            id="name"
+            placeholder="Name"
+            v-model.trim="name"
+        />
+        <span class="input-text__error-message">{{ errorName }}</span>
+      </div>
+      <button
+          class="button button__primary button_type_medium"
+          @click="handleRegister"
+          :disabled="!isEmailValid"
+      >
+        Зарегистрироваться
+      </button>
+
+    </div>
+  </div>
+</template>
+
+<script>
+import { API_URL, PATTERNS, HEADERS } from "../utils/constants";
+
+export default {
+  name: 'Login',
+  data() {
+    return {
+      email: '',
+      password: '',
+      name: '',
+      errorEmail: null,
+      errorPassword: null,
+      errorName: null,
+      emailInputClass: 'input-text',
+      codeInputClass: 'input-text',
+      isLoggedIn: false,
+    }
+  },
+  computed: {
+    isEmailValid() {
+      return PATTERNS.EMAIL.test(this.email);
+    },
+  },
+  watch: {
+    'email'() {
+      this.emailInputClass = 'input-text';
+      this.errorEmail = null;
+    },
+    'isLoggedIn'() {
+      this.$emit('sendIsLoggedIn', this.isLoggedIn);
+    }
+  },
+  methods: {
+    handleRegister() {
+      this.signUpRequest(this.email, this.password, this.name)
+    },
+    async signUpRequest(email, password, name) {
+      try {
+        await fetch(`${API_URL}/signup`, {
+          method: "POST",
+          body: JSON.stringify({
+            email,
+            password,
+            name
+          }),
+          headers: HEADERS,
+        })
+            .then((response) => response.json())
+            .then((response) => {
+              console.log(response)
+              this.authorize(this.email, this.password)
+            })
+      } catch(error) {
+        this.emailInputClass = 'input-text input-text_type_error';
+        this.errorEmail = 'NetworkError when attempting to fetch resource';
+        if (error.status === 406) {
+          this.errorEmail = 'Пользователь с указанным email не существует'
+        }
+        else if(error.status === 429) {
+          this.errorEmail = 'Сервер загружен, попробуйте еще раз позже'
+        }
+        else {
+          this.errorEmail = 'NetworkError when attempting to fetch resource'
+        }
+      }
+    },
+    authorize(email, password) {
+      fetch(`${API_URL}/signin`, {
+        method: "POST",
+        body: JSON.stringify({
+          email,
+          password
+        }),
+        headers: HEADERS
+      })
+          .then((response) => response.json())
+          .then((response) => {
+            if (response.success) {
+              if (response.token) {
+                this.saveToken(response.token);
+                this.isLoggedIn = true;
+                localStorage.setItem('isLoggedIn', this.isLoggedIn);
+              }
+            }
+            else {
+              this.codeInputClass = 'input-text input-text_type_error';
+              this.errorCode = response.message;
+            }
+          })
+          .catch(() => {
+            this.codeInputClass = 'input-text input-text_type_error';
+            this.errorCode = 'Код подтверждения введен неверно';
+          })
+    },
+    saveToken(token) {
+      localStorage.setItem('token', token);
+      alert('токен сохранен')
+    }
+  }
+}
+</script>
