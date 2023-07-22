@@ -48,7 +48,7 @@
 import { API_URL, PATTERNS, HEADERS } from "../utils/constants";
 
 export default {
-  name: 'Login',
+  name: 'Register',
   data() {
     return {
       email: '',

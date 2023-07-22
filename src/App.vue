@@ -1,12 +1,12 @@
 <script setup>
 import { RouterView } from 'vue-router'
 import Header from "./components/Header.vue";
-import Login from "./components/Login.vue";
+import Register from "./components/Register.vue";
 </script>
 
 <template>
   <Header />
-  <Login />
+  <Register />
   <RouterView />
 </template>
 
