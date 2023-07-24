@@ -1,7 +1,7 @@
 <template>
-  <div class="login-form-mobile">
-    <h4 class="login-form-mobile__heading">Рады снова видеть!</h4>
-    <div class="login-form-mobile__wrapper">
+  <div class="form">
+    <h4 class="form__heading">Рады снова видеть!</h4>
+    <div class="form__wrapper">
       <div class="form-control">
         <input
             :class="emailInputClass"

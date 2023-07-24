@@ -1,7 +1,7 @@
 <template>
-  <div class="login-form-mobile">
-    <h4 class="login-form-mobile__heading">Добро пожаловать!</h4>
-    <div class="login-form-mobile__wrapper">
+  <div class="form">
+    <h4 class="form__heading">Добро пожаловать!</h4>
+    <div class="form__wrapper">
       <div class="form-control">
         <input
             :class="emailInputClass"
@@ -33,7 +33,7 @@
         <span class="input-text__error-message">{{ errorName }}</span>
       </div>
       <button
-          class="button button__primary button_type_medium"
+          class="button button_type_medium"
           @click="handleRegister"
           :disabled="!isEmailValid"
       >
