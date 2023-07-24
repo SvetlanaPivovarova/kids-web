@@ -30,25 +30,8 @@ const router = createRouter({
       }
     },
     {
-      path: '/user/:id',
-      name: 'user',
-      component: () => import('../views/User.vue'),
-      props: true,
-      children: [{
-        path: 'info',
-        name: 'userinfo',
-        component: () => import('../views/UserInfo.vue'),
-        props: true,
-      }, {
-        path: 'extra',
-        component: () => import('../views/UserExtra.vue')
-      }],
-      meta: { requiresAuth: true },
-
-    },
-    {
-      path: '/code',
-      name: 'code',
+      path: '/video',
+      name: 'video',
       component: () => import('../views/VideoView.vue'),
       meta: {
         requiresAuth: true
