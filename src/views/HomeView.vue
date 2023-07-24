@@ -1,10 +1,15 @@
 <template>
   <main>
-    <section class="container b-about">
-      <div class="container-wrapper_green">
-        <h2>hi there home</h2>
+    <section class="section">
+      <div class="b-about">
+        <h2 class="b-about__heading">Ты здесь - значит пришло <span>время понять Vue!</span></h2>
       </div>
+      <div class="icon">
+        <a></a>
+      </div>
+
     </section>
+
 
 
   </main>
