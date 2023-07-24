@@ -1,4 +1,5 @@
 <template>
+  <Header />
   <main>
     <section class="b-about">
       <div class="b-about__container">
@@ -15,9 +16,10 @@
 
 <script>
 import { checkToken } from "../utils/auth";
+import Header from "../components/Header.vue";
 import Story from "../components/Story.vue";
 export default {
-  components: {Story},
+  components: { Story, Header },
   data() {
     return {
       token: localStorage.getItem('token'),

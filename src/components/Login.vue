@@ -1,6 +1,6 @@
 <template>
   <div class="form">
-    <h4 class="form__heading">Рады снова видеть!</h4>
+    <h2 class="form__heading">Рады снова видеть!</h2>
     <div class="form__wrapper">
       <div class="form-control">
         <input
@@ -15,7 +15,7 @@
       <div class="form-control">
         <input
             :class="emailInputClass"
-            type="text"
+            type="password"
             id="password"
             placeholder="Password"
             v-model.trim="password"

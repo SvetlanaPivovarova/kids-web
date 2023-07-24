@@ -1,5 +1,5 @@
 <template>
-  <section class="content" id="#about">
+  <section class="content">
     <div class="content__wrapper">
       <h2 class="content__heading">Почему я люблю программирование?</h2>
       <p class="content__text">Первое знакомство с программированием было, как у многих, еще в школе. Тогда казалось, что это магия: несколько строк и машина сама считает за тебе пример без всякого нажатия на кнопки калькулятора.</p>

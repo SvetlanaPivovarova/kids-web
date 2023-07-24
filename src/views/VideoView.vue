@@ -1,4 +1,5 @@
 <template>
+  <Header />
   <section class="video">
     <h2 class="video__title">Фишки из CSS</h2>
     <p class="video__subtitle">Предлагаю твоему вниманию короткое видео, чтобы познакомиться с удивительными возможностями CSS</p>
@@ -9,11 +10,15 @@
       <a href="https://github.com/SvetlanaPivovarova/kids-web/archive/refs/heads/main.zip">Скачать репозиторий этого приложения</a>
     </div>
   </section>
-
+  <Feedback />
 </template>
 
 <script>
+import Header from "../components/Header.vue";
+import Feedback from "../components/Feedback.vue";
+
 export default {
   name: 'VideoView',
+  components: {Feedback, Header },
 }
 </script>
