@@ -68,5 +68,13 @@ export const checkToken = (token) => {
                 console.log(`Ошибка: ${res.status}`);
             }
         })
-        .then(data => data)
+        .then(data => {
+            console.log(data.data.name);
+            const isLoggedIn = true;
+            localStorage.setItem('isLoggedIn', isLoggedIn);
+            localStorage.setItem('name', data.data.name);
+        })
+        //.catch((error) => {
+        //    localStorage.clear()
+        //})
 }
