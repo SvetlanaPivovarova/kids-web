@@ -1,5 +1,5 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import HomeView from '../views/HomeView.vue';
 import { checkToken } from "../utils/auth";
 
 const router = createRouter({
@@ -49,7 +49,7 @@ const router = createRouter({
     {
       path: '/code',
       name: 'code',
-      component: () => import('../components/Code.vue'),
+      component: () => import('../views/VideoView.vue'),
       meta: {
         requiresAuth: true
       }

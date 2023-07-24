@@ -1,0 +1,29 @@
+.video {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+
+  &__title {
+    margin-bottom: 20px;
+  }
+
+  &__subtitle {
+    font-size: 18px;
+  }
+
+  &__iframes {
+    width: 1050px;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+
+    z-index: 1;
+  }
+
+  &__iframe {
+    width: 650px;
+    height: 400px;
+    border: none;
+  }
+}
