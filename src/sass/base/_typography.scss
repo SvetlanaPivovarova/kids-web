@@ -15,6 +15,7 @@ a {
   color: $wine;
   text-decoration: none;
   transition: all $transition-speed;
+  font-family: $body-font;
 
   &:hover {
     color: $dark-wine;

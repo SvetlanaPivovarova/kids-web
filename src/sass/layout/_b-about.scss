@@ -1,10 +1,8 @@
 @import "../abstracts/variables";
 
-
-
 .b-about {
   width: 100vw;
-  height: 1000px;
+  height: 900px;
   background-image: url("/src/assets/about.png");
   background-repeat: no-repeat;
   background-position: 0 50%;
@@ -18,9 +16,7 @@
   &__heading {
     font-size: 70px;
     display: inline-block;
-    position: absolute;
-    top: 400px;
-    right: 70px;
+
 
     span {
       color: $text-white;
@@ -32,7 +28,22 @@
     }
   }
 
-  .icon {
-    background-image: url("src/assets/arrow.svg");
+  &__container {
+    position: absolute;
+    top: 400px;
+    right: 70px;
+  }
+
+  &__link {
+    margin-top: 200px;
+    display: block;
+
+    .icon {
+      display: block;
+      margin-top: 20px;
+      background-image: url("src/assets/arrow.svg");
+      height: 36px;
+      background-repeat: no-repeat;
+    }
   }
 }
