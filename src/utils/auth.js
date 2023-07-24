@@ -1,4 +1,4 @@
-import { API_URL } from "./constants";
+import {API_URL, HEADERS} from "./constants";
 
 function checkResponse(res) {
     if (res.ok) {
@@ -32,7 +32,7 @@ export const register = ( {email, password,  name} ) => {
         });
 };
 
-export const authorize = (email, password) => {
+export const login = (email, password) => {
     return fetch(`${API_URL}/signin`, {
         method: 'POST',
         headers: {
@@ -55,6 +55,18 @@ export const authorize = (email, password) => {
             return data;
         })
 };
+
+export const authorize = (email, password) => {
+        return fetch(`${API_URL}/signin`, {
+            method: "POST",
+            body: JSON.stringify({
+                email,
+                password
+            }),
+            headers: HEADERS
+        })
+            .then((response) => response.json())
+}
 
 export const checkToken = (token) => {
     return fetch(`${API_URL}/users/me`, {
