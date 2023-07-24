@@ -1,0 +1,80 @@
+@import "../abstracts/variables";
+
+.button {
+  display: inline-block;
+  padding: 15px 15px 14px 17px;
+  background-color: $wine;
+  color: $white;
+  font-size: $fz-button;
+  font-weight: $fw-semi-bold;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: $br-normal;
+  cursor: pointer;
+  transition: background-color $transition-speed ease;
+
+  &:hover {
+    background-color: $dark-wine;
+  }
+
+  &:active {
+    background-color: $dark-wine;
+  }
+
+  &_type_normal {
+    width: 283px;
+    height: 53px;
+
+    @media #{$media-laptop} {
+      width: 315px;
+    }
+  }
+
+  &_type_large {
+    width: 300px;
+    height: 53px;
+    font-size: $fz-body-medium;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  &_type_medium {
+    width: 280px;
+    height: 53px;
+    font-size: $fz-body;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  &_type_small {
+    width: 230px;
+    height: 36px;
+    padding: 9px 11px 15px 12px;
+    font-size: $fz-button-xs;
+  }
+
+  &_type_xs {
+    width: 177px;
+    height: 36px;
+    padding: 9px 20px 8px;
+    font-size: $fz-button-xs;
+    border-radius: $br-small;
+  }
+
+  &_disabled, &:disabled {
+    background-color: $grey-500;
+
+    &:hover {
+      background-color: $grey-500;
+    }
+  }
+}
+
+a.button {
+  line-height: 1.2em;
+
+  &:hover {
+    color: $white;
+  }
+}

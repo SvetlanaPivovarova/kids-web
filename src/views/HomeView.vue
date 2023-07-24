@@ -1,8 +1,12 @@
 <template>
   <main>
-    <h2>hi there home</h2>
-    <p>{{getToken}}</p>
-    <button @click="printToken">Print</button>
+    <section class="container b-about">
+      <div class="container-wrapper_green">
+        <h2>hi there home</h2>
+      </div>
+    </section>
+
+
   </main>
 </template>
 

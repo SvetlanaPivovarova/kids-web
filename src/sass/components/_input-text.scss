@@ -1,0 +1,72 @@
+@import "../abstracts/variables";
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  width: 100%;
+  margin-bottom: 15px;
+
+  .input-text {
+    width: 100%;
+    height: 50px;
+    border-radius: $br-normal;
+    border: 1px solid $grey-200;
+    box-sizing: border-box;
+    padding: 16px 20px 17px;
+    color: $dark-wine;
+
+      &::placeholder {
+        color: $grey-500;
+      }
+
+      &:disabled {
+        background-color: $grey-50;
+        border-color: $grey-200;
+      }
+
+      &_filled {
+        &:disabled {
+          background-color: $grey-50;
+          border-color: $grey-200;
+          color: $grey-700;
+        }
+      }
+
+      &-prompt {
+        color: $grey-500;
+        margin-bottom: 5px;
+
+        &_type_error {
+          color: $cta-red;
+        }
+      }
+
+      &_type_error {
+        border-color: $cta-red;
+
+        &::placeholder {
+          color: $cta-red;
+        }
+      }
+
+    &-label {
+      color: $black;
+      margin: 0 0 14px 0;
+
+      &_type_filled {
+        margin-bottom: 8px;
+      }
+
+      &_type_error {
+        color: $cta-red;
+        font-size: $fz-body-small;
+      }
+    }
+
+    &__error-message {
+      color: $cta-red;
+      margin: 14px 0 0;
+    }
+  }
+}
