@@ -3,10 +3,10 @@
     <section class="b-about">
       <div class="b-about__container">
         <h2 class="b-about__heading">Ты здесь - значит пришло <span>время понять Vue!</span></h2>
-        <a class="b-about__link" href="#about">
+        <p class="b-about__link">
             Моя история программирования
-            <div class="icon"></div>
-       </a>
+            <span class="icon"></span>
+       </p>
       </div>
     </section>
     <Story />
@@ -25,31 +25,17 @@ export default {
     }
   },
   beforeMount() {
-    console.log(this.token)
     if (this.token) {
       checkToken(this.token)
           .then(() => {
             this.isLoggedIn = true
-            alert('true')
           })
           .catch((err) => {
             console.log(err);
           })
     }
-
   },
 
-  computed: {
-    getToken() {
-      this.token = localStorage.getItem('token')
-    }
-  },
-  methods: {
-    printToken() {
-      alert(this.token)
-
-    }
-  },
 }
 
 </script>

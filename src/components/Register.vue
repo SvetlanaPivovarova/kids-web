@@ -35,7 +35,7 @@
       <button
           class="button button_type_medium"
           @click="handleRegister"
-          :disabled="!isEmailValid"
+          :disabled="!isEmailValid || !this.password || !this.name"
       >
         Зарегистрироваться
       </button>

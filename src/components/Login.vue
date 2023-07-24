@@ -25,7 +25,7 @@
       <button
           class="button button__primary button_type_medium"
           @click="handleAuthorize"
-          :disabled="!isEmailValid"
+          :disabled="!isEmailValid || !this.password"
       >
         Войти
       </button>
@@ -61,6 +61,11 @@ export default {
   methods: {
     handleAuthorize() {
       authorize(this.email, this.password)
+          .then(() => {
+            this.isLoggedIn = true;
+            localStorage.setItem('isLoggedIn', this.isLoggedIn)
+            this.$router.push('/video')
+          })
           .catch(() => {
             this.codeInputClass = 'input-text input-text_type_error';
           })

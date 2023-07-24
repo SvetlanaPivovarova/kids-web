@@ -8,12 +8,6 @@ function checkResponse(res) {
 }
 
 export const register = ( {email, password,  name} ) => {
-    const obj = JSON.stringify({
-        email: email,
-        password: password,
-        name: name
-    });
-    console.log(obj)
     return fetch(`${API_URL}/signup`, {
         method: 'POST',
         headers: {
@@ -45,8 +39,7 @@ export const authorize = (email, password) => {
             .then((response) => {
                 if (response.token) {
                     localStorage.setItem('token', response.token);
-                    this.isLoggedIn = true;
-                    localStorage.setItem('isLoggedIn', this.isLoggedIn);
+                    localStorage.setItem('isLoggedIn', true)
                 }
             })
 }
@@ -68,13 +61,8 @@ export const checkToken = (token) => {
                 console.log(`Ошибка: ${res.status}`);
             }
         })
-        .then(data => {
-            console.log(data.data.name);
+        .then(() => {
             const isLoggedIn = true;
             localStorage.setItem('isLoggedIn', isLoggedIn);
-            localStorage.setItem('name', data.data.name);
         })
-        //.catch((error) => {
-        //    localStorage.clear()
-        //})
 }

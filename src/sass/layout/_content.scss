@@ -26,7 +26,7 @@
   }
 
   &__link {
-    margin-top: 100px;
+    margin: 100px 0 40px;
     font-size: 20px;
     background-color: $bezh-background;
     min-height: 100px;
@@ -34,5 +34,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    a {
+      padding: 10px;
+    }
+
+    &_type_green {
+      background-color: $green-background;
+      min-height: 50px;
+    }
   }
 }

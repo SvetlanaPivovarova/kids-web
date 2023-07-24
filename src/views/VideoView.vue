@@ -5,7 +5,11 @@
     <div class="video__iframes">
       <iframe class="video__iframe" src="https://www.youtube.com/embed/5MgBikgcWnY" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
+    <div class="content__link content__link_type_green">
+      <a href="https://github.com/SvetlanaPivovarova/kids-web/archive/refs/heads/main.zip">Скачать репозиторий этого приложения</a>
+    </div>
   </section>
+
 </template>
 
 <script>

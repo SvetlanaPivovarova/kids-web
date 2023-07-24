@@ -51,7 +51,6 @@ router.beforeEach((to, from, next) => {
       const token = localStorage.getItem('token')
       checkToken(token)
           .then(() => {
-        alert('good')
         next()
       })
           .catch(() => {
