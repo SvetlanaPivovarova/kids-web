@@ -32,30 +32,6 @@ export const register = ( {email, password,  name} ) => {
         });
 };
 
-export const login = (email, password) => {
-    return fetch(`${API_URL}/signin`, {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(
-            {
-                "email": email,
-                "password": password
-            }
-        )
-    })
-        .then((response => response.json()))
-        .then((data) => {
-            if (data.token){
-                localStorage.setItem('jwt', data.token);
-                return data.token;
-            }
-            return data;
-        })
-};
-
 export const authorize = (email, password) => {
         return fetch(`${API_URL}/signin`, {
             method: "POST",
@@ -66,6 +42,13 @@ export const authorize = (email, password) => {
             headers: HEADERS
         })
             .then((response) => response.json())
+            .then((response) => {
+                if (response.token) {
+                    localStorage.setItem('token', response.token);
+                    this.isLoggedIn = true;
+                    localStorage.setItem('isLoggedIn', this.isLoggedIn);
+                }
+            })
 }
 
 export const checkToken = (token) => {

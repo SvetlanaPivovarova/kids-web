@@ -46,6 +46,7 @@
 
 <script>
 import { API_URL, PATTERNS, HEADERS } from "../utils/constants";
+import { authorize } from "../utils/auth";
 
 export default {
   name: 'Register',
@@ -94,7 +95,10 @@ export default {
             .then((response) => response.json())
             .then((response) => {
               console.log(response)
-              this.authorize(this.email, this.password)
+              authorize(this.email, this.password)
+                  .catch(() => {
+                    this.codeInputClass = 'input-text input-text_type_error';
+                  })
             })
       } catch(error) {
         this.emailInputClass = 'input-text input-text_type_error';
@@ -110,38 +114,6 @@ export default {
         }
       }
     },
-    authorize(email, password) {
-      fetch(`${API_URL}/signin`, {
-        method: "POST",
-        body: JSON.stringify({
-          email,
-          password
-        }),
-        headers: HEADERS
-      })
-          .then((response) => response.json())
-          .then((response) => {
-            if (response.success) {
-              if (response.token) {
-                this.saveToken(response.token);
-                this.isLoggedIn = true;
-                localStorage.setItem('isLoggedIn', this.isLoggedIn);
-              }
-            }
-            else {
-              this.codeInputClass = 'input-text input-text_type_error';
-              this.errorCode = response.message;
-            }
-          })
-          .catch(() => {
-            this.codeInputClass = 'input-text input-text_type_error';
-            this.errorCode = 'Код подтверждения введен неверно';
-          })
-    },
-    saveToken(token) {
-      localStorage.setItem('token', token);
-      alert('токен сохранен')
-    }
   }
 }
 </script>

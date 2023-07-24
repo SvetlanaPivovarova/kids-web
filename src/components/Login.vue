@@ -61,16 +61,6 @@ export default {
   methods: {
     handleAuthorize() {
       authorize(this.email, this.password)
-          .then((response) => {
-
-              if (response.token) {
-                localStorage.setItem('token', response.token);
-                alert('токен сохранен')
-                this.isLoggedIn = true;
-                localStorage.setItem('isLoggedIn', this.isLoggedIn);
-              }
-
-          })
           .catch(() => {
             this.codeInputClass = 'input-text input-text_type_error';
           })
