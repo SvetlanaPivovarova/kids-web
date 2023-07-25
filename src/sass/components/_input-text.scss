@@ -70,3 +70,13 @@
     }
   }
 }
+
+.input-text__message {
+  margin-top: 20px;
+  color: #4E706A;
+  text-align: center;
+
+  &_type_error {
+    color: #4D0011;
+  }
+}

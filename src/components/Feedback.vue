@@ -7,7 +7,8 @@
         <input
             :class="emailInputClass"
             type="email"
-            id="e-mail"
+            id="email"
+            name="email"
             placeholder="Email"
             v-model.trim="email"
         />
@@ -17,6 +18,7 @@
         <textarea
             id="password"
             v-model="message"
+            name="message"
             placeholder="Remember, be nice!" cols="30" rows="5"
             class="form__textarea"
         />
@@ -29,12 +31,13 @@
       >
         Отправить
       </button>
+      <p :class="messageClass" v-if="isSend">{{isSend}}</p>
     </div>
   </div>
 </template>
 
 <script>
-import {PATTERNS} from "../utils/constants";
+import { PATTERNS, SCRIPT_URL} from "../utils/constants";
 
 export default {
   name: 'Feedback',
@@ -45,6 +48,8 @@ export default {
       errorEmail: '',
       errorMessage: '',
       emailInputClass: 'input-text',
+      isSend: '',
+      messageClass: 'input-text__message'
     }
   },
   computed: {
@@ -54,8 +59,30 @@ export default {
   },
   methods: {
     sendMessage() {
-      console.log(this.message)
+      const data = new FormData;
+      data.append('email', this.email)
+      data.append('message', this.message)
+      fetch(SCRIPT_URL, { method: 'POST', body: data})
+          .then(response => {
+            this.isSend = "Сообщение успешно отправлено!"
+          })
+          .catch(error => {
+            this.isSend = "К сожалению, сообщение не удалось отправить. Попробуйте еще раз!";
+            this.messageClass = 'input-text__message input-text__message_type_error'
+            console.error('Error', error.message)
+          })
+    }
+  },
+  watch: {
+    'email'() {
+      this.isSend = '';
+      this.messageClass = 'input-text__message'
+    },
+    'message'() {
+      this.isSend = '';
+      this.messageClass = 'input-text__message'
     }
   }
 }
+
 </script>
