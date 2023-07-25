@@ -12,14 +12,18 @@
         <RouterLink to="/video">Посмотри свое первое видео про CSS прямо сейчас</RouterLink>
       </div>
     </div>
-    <img src="src/assets/story.jpg" alt="Фотография автора">
-
-
+    <img :src='img' alt="Фотография автора">
   </section>
 </template>
 
 <script>
+import photo from '../assets/story.jpg';
 export default {
-  name: 'Story'
+  name: 'Story',
+  data() {
+    return {
+      img: photo
+    }
+  }
 }
 </script>

@@ -1,4 +1,5 @@
 <template>
+  <Header />
   <div class="form">
     <h2 class="form__heading">Добро пожаловать!</h2>
     <div class="form__wrapper">
@@ -47,9 +48,11 @@
 <script>
 import { API_URL, PATTERNS, HEADERS } from "../utils/constants";
 import { authorize } from "../utils/auth";
+import Header from "./Header.vue";
 
 export default {
   name: 'Register',
+  components: {Header},
   data() {
     return {
       email: '',

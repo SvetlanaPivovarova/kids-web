@@ -1,4 +1,5 @@
 <template>
+  <Header />
   <div class="form">
     <h2 class="form__heading">Рады снова видеть!</h2>
     <div class="form__wrapper">
@@ -37,9 +38,11 @@
 <script>
 import { authorize } from "../utils/auth";
 import { PATTERNS } from "../utils/constants";
+import Header from "./Header.vue";
 
 export default {
   name: 'Login',
+  components: {Header},
   data() {
     return {
       email: '',
