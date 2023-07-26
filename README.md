@@ -1,14 +1,16 @@
 # kids-web
 
-This template should help get you started developing with Vue 3 in Vite.
+Приложение визитка на Vue.js
 
-## Recommended IDE Setup
+Бекенд для данного приложения написан на Express.js
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+В публичной части приложения можно:
+- прочитать короткую историю о том, почему программирование стало для меня любимым занятием;
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+В закрытой части сайта, доступной после регистрации:
+- получить ссылку на публичный репозиторий с исходниками этого приложения;
+- увидеть короткое видео, скринкаст, где я рассказываю про использование одной классной фишки из CSS;
+- найти форму обратной связи и связаться со мной.
 
 ## Project Setup
 
@@ -33,3 +35,7 @@ npm run build
 ```sh
 npm run lint
 ```
+
+##  Деплой
+
+Бэкенд проекта развернут [server](http://api.pivovarova.pro.nomoredomains.xyz/)
