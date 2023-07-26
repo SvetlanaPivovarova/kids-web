@@ -40,7 +40,9 @@
       >
         Зарегистрироваться
       </button>
-
+    </div>
+    <div class="input-text__message">Уже зарегистрированы?
+      <RouterLink to="/login">Войти</RouterLink>
     </div>
   </div>
 </template>
